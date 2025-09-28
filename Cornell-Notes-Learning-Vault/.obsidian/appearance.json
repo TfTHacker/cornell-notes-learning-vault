@@ -1,0 +1,13 @@
+{
+  "accentColor": "#9497e5",
+  "theme": "moonstone",
+  "enabledCssSnippets": [
+    "banner",
+    "zLearningVault",
+    "cornell",
+    "theme-default-and-others"
+  ],
+  "cssTheme": "",
+  "showViewHeader": true,
+  "baseFontSize": 16
+}

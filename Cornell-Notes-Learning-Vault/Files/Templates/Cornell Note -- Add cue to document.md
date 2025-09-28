@@ -1,0 +1,1 @@
+>[!cue] <% tp.system.prompt("What text should appear in the cue?") %>

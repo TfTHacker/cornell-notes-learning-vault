@@ -1,0 +1,6 @@
+/* This CSS provides support to the learning vault and is not needed in your personal vault */
+
+.border-around-images img {
+    border: 4px outset !important;
+    margin: 20px;
+}

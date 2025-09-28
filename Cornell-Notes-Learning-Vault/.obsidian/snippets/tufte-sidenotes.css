@@ -1,0 +1,91 @@
+/*
+Author: TfTHacker - more info  https://tfthacker.com/
+Date:   2023-09-27
+LICENSE: Copyright © 2023 TfThacker (https://tfthacker.com/)  You are granted a non-exclusive, non-transferable, 
+and non-sublicensable license to use and modify this file for your personal use only, and are prohibited from 
+distributing, sublicensing, using for commercial purposes. This file remain the property of TfTHacker, and any unauthorized 
+use or infringement will result in termination of this License. This file are provided "AS IS" without warranty of any kind, 
+and the Licensor shall not be liable for any damages arising from the use or distribution of this file. By using this file, 
+you acknowledge that you have read, understand, and agree to be bound by this License Agreement. 
+*/
+
+/* Prevents the sidenotes from being displayed unless the media width is matched */
+.tufte-sidenotes-collection {
+    display: none;
+}
+
+.cornell-left .tufte-sidenotes-collection {
+    left: 0px;
+}
+
+.cornell-right .tufte-sidenotes-collection {
+    right: 0px
+}
+
+@media (min-width: 400px) {
+
+    .tufte-sidenotes-collection {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+    }
+
+    .tufte-sidenote {
+        width: var(--cornell-cue-callout-width);
+        font-size: var(--footnote-size) !important;
+        display: block;
+        margin: 0px;
+        margin-bottom: 5px;
+    }
+
+    .is-readable-line-width .tufte-sidenote {
+        width: var(--cornell-cue-callout-width-readable-line);
+    }
+
+    .cornell-left .tufte-sidenote {
+        padding-left: 23px;
+        padding-right: 18px;
+    }
+
+
+    .cornell-right .tufte-sidenote {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .tufte-sidenote>p,
+    .tufte-sidenote>a {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        display: inline;
+    }
+
+    .tufte-footnote-number {
+        display: inline;
+        vertical-align: super;
+        font-size: x-small;
+        font-weight: bold;
+        color: var(--link-color);
+        ;
+    }
+
+    .tufte-footnote-number::after {
+        content: " ";
+    }
+
+    /* Hide footnotes class */
+    :is(.cornell-left, .cornell-right).tufte-sidenotes.tufte-hide-footnotes .footnotes {
+        display: none;
+    }
+
+}
+
+@media print {
+    .cornell-left .tufte-sidenote {
+        padding-right: 15px;
+    }
+
+    .cornell-right .tufte-sidenote {
+        padding-left: 25px;
+    }
+}

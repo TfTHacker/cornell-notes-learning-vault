@@ -1,0 +1,44 @@
+/* 
+HACK: cornell-cue-top-border
+Adding a borderline across the top of a cue till the end of the document 
+*/
+
+.markdown-preview-view.cornell-cue-top-border:is(.cornell-left, .cornell-right) .markdown-preview-section [data-callout="cue"] {
+    width: 100% !important;
+    border-top: 1px solid var(--background-modifier-border) !important;
+    .callout-title,
+    .callout-content {
+        width: var(--cornell-cue-callout-width) !important;  
+        padding-bottom: 0px;
+    }
+    .callout-content {
+        padding-top: 0px !important;
+        margin-top: 0px !important;
+    }
+}
+
+.markdown-preview-view.cornell-right.cornell-cue-top-border .markdown-preview-section [data-callout="cue"] {
+    .callout-title,
+    .callout-content {
+        position: fixed !important;
+        right: 0px !important;
+    }
+    .callout-content {
+        margin-top: 25px !important;
+    }
+}
+
+
+
+/* 
+HACK: cornell-normal-title
+Make the title area of a callout that is a cue default to standard text formatting, not a title format
+*/
+.markdown-source-view.cornell-cue-normal-title:is(.cornell-left,  .cornell-right),
+.markdown-preview-view.cornell-cue-normal-title:is(.cornell-left, .cornell-right){
+    .callout-title-inner {
+        color: var(--text-normal);
+        font-weight: var(--anp-font-preview-wt, normal) !important; 
+    }
+} 
+

@@ -1,0 +1,95 @@
+/* 
+Author: TfTHacker - more info  https://tfthacker.com/
+Date:   2023-08-12
+
+This file demonstrates a few "opinionated" tweaks when using cornell.css with a the below mentioned theme.
+
+For use with following themes
+- Blue Topaz
+*/
+
+@media screen {
+    /* If using a banner, make the top margin shorter so the border line intersects with the banner image */
+    .markdown-preview-view.cornell-border.banner-image .markdown-preview-section {
+        margin-top: 118px !important;
+    }
+
+    div:not(.markdown-embed-content) > .markdown-preview-view.cornell-border:has([data-callout="summary-top"])   {
+        margin-top: 148px !important;
+    }
+
+
+    /* Bring the callout title closer the child elements */
+    .markdown-source-view.cornell-livepreview:where(.cornell-left, .cornell-right) [data-callout="cue"],
+    .markdown-preview-view:where(.cornell-left, .cornell-right) .markdown-preview-section [data-callout="cue"],
+    .markdown-preview-view:where(.cornell-left, .cornell-right) [data-callout="cue"] {
+        .callout-content  {
+            padding: 0px !important;
+        }
+        .callout-content > * {
+            margin-top: 3px !important;
+        }
+        .callout-title {
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+    }
+
+    :is(.cornell-left, .cornell-right) .markdown-preview-section :is([data-callout="summary"], [data-callout="summary-top"]) {
+        border: 0px !important;
+        .callout-title {
+            background-color: unset;
+            padding-left: 5px !important;
+            padding-top: 5px !important;
+        }
+    }
+
+    /* LEFT hand margin Cue adjustments */
+    /* Preview */
+    .markdown-preview-view.cornell-left .markdown-preview-section [data-callout="cue"] {
+        padding-right: 15px !important;
+    }
+    
+    /* Live Preview */
+    .markdown-source-view.cornell-livepreview.cornell-left  .cm-sizer .cm-embed-block:has([data-callout="cue"]) {
+        padding-left: 10px;
+        padding-right: 15px;
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-left.is-readable-line-width  .cm-sizer .cm-embed-block:has([data-callout="cue"]) {
+        padding-right: 15px;
+    }
+
+
+    /* RIGHT hand margin Cue adjustments */
+    /* Preview */
+    .markdown-preview-view.cornell-right .markdown-preview-section [data-callout="cue"] {
+    }
+    
+    /* Live Preview */
+    .markdown-source-view.cornell-livepreview.cornell-right  .cm-sizer .cm-embed-block:has([data-callout="cue"]) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .markdown-source-view.cornell-livepreview.cornell-right.is-readable-line-width  .cm-sizer .cm-embed-block:has([data-callout="cue"]) {
+        padding-left: 10px !important;
+    }
+
+}
+
+@media print {
+    /* Bring the callout title closer the child elements */
+    .markdown-preview-view:where(.cornell-left, .cornell-right) .markdown-preview-section [data-callout="cue"],
+    .markdown-preview-view:where(.cornell-left, .cornell-right) [data-callout="cue"] {
+        .callout-content > * {
+            margin-top: 3px !important;
+        }
+    }
+
+    :is(.cornell-left, .cornell-right) .markdown-preview-section :has([data-callout="summary"], [data-callout="summary-top"]) {
+        .callout-content > * {
+            margin-top: 5px !important;
+        }
+    }
+}

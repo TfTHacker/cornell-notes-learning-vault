@@ -1,0 +1,416 @@
+/* 
+Author: TfTHacker - more info  https://tfthacker.com/
+Date:   2023-12-06
+LICENSE: Copyright © 2023 TfThacker (https://tfthacker.com/)  You are granted a non-exclusive, non-transferable, 
+and non-sublicensable license to use and modify this file for your personal use only, and are prohibited from 
+distributing, sublicensing, using for commercial purposes. This file remain the property of TfTHacker, and any unauthorized 
+use or infringement will result in termination of this License. This file are provided "AS IS" without warranty of any kind, 
+and the Licensor shall not be liable for any damages arising from the use or distribution of this file. By using this file, 
+you acknowledge that you have read, understand, and agree to be bound by this License Agreement. 
+[helpUrl:   Cornell Notes - Quick Reference| https://tfthacker.com/cnlv-qr  ]
+*/
+
+
+:root {
+    /* Column widths used by cues */
+    --cornell-cue-column-width: 150px;
+    --cornell-cue-column-width-readable-line: 150px;
+
+    /* Cue callout */
+    --cornell-cue-callout-width: 158px;
+    --cornell-cue-callout-width-readable-line: 158px;
+
+    /* summary callout - used for bottom of page summaries */
+    --cornell-summary-callout-max-height: 150px;
+
+
+    /* summary callout - used for top of page summaries */
+    --cornell-summary-callout-top-height: 150px !important;
+
+    /* cornel-border variables */
+    --cornell-border-padding: 10px;
+
+    .theme-light {
+        --cornell-summary-callout-background-color: #f0f8ff;
+        --cornell-border-color: #808080;
+    }
+
+    .theme-dark {
+        --cornell-summary-callout-background-color: #2e2a2a;
+        --cornell-border-color: #373535;
+    }
+}
+
+
+:is(.cornell-left, .cornell-right) [data-callout="cue"] {
+    /* Icon appears on smaller screens */
+    --callout-icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-start-vertical"><rect width="9" height="6" x="6" y="14" rx="2"/><rect width="16" height="6" x="6" y="4" rx="2"/><path d="M2 2v20"/></svg>';
+
+}
+
+:is(.cornell-left, .cornell-right) :is([data-callout="summary"], [data-callout="summary-top"]) {
+    /* Icon appears on smaller screens */
+    --callout-icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-stack"><path d="M4 10c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2"/><path d="M10 16c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2"/><rect width="8" height="8" x="14" y="14" rx="2"/></svg>';
+}
+
+@media (min-width: 400px) {
+
+    /* ==========================================================================================   */
+    /* =                              SHARED SETTINGS                                           =   */
+    /* ==========================================================================================   */
+
+    .markdown-source-view.cornell-livepreview.cornell-left [data-callout="cue"],
+    .markdown-preview-view.cornell-left [data-callout="cue"] {
+        padding-left: 15px !important;
+        padding-right: 10px !important;
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-right [data-callout="cue"],
+    .markdown-preview-view.cornell-right [data-callout="cue"] {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .markdown-source-view.cornell-livepreview:where(.cornell-left, .cornell-right) [data-callout="cue"] {
+        display: inline;
+        border-left: 0px;
+    }
+
+    .markdown-source-view.cornell-livepreview:where(.cornell-left, .cornell-right) [data-callout="cue"],
+    .markdown-preview-view:where(.cornell-left, .cornell-right) [data-callout="cue"] {
+        background-color: transparent !important;
+        padding: 0px;
+        z-index: 999;
+
+        .callout-title {
+            background-color: transparent !important;
+        }
+
+        .callout-icon {
+            display: none;
+            /* No icon needed */
+        }
+
+        .callout-title {
+            border: 0px !important;
+        }
+    }
+
+    /* ==========================================================================================   */
+    /* =                              NOT IN READABLE LINE LENGTH                               =   */
+    /* ==========================================================================================   */
+    .markdown-source-view.cornell-livepreview:where(.cornell-left, .cornell-right):not(.is-readable-line-width) .cm-scroller .cm-embed-block:has([data-callout="cue"]),
+    .markdown-preview-view:where(.cornell-left, .cornell-right):not(.is-readable-line-width) .markdown-preview-section [data-callout="cue"],
+    .markdown-preview-view:where(.cornell-left, .cornell-right):not(.is-readable-line-width) [data-callout="cue"] {
+        background-color: transparent !important;
+        border: 0px !important;
+        margin: 0px;
+        position: absolute;
+        width: var(--cornell-cue-callout-width);
+        overflow: hidden;
+
+        .callout-content {
+            border: 0px;
+        }
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-left:not(.is-readable-line-width) .cm-scroller,
+    .markdown-preview-view.cornell-left:not(.is-readable-line-width) {
+        padding-left: var(--cornell-cue-column-width) !important;
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-left:not(.is-readable-line-width) .cm-scroller .cm-embed-block:has([data-callout="cue"]),
+    .markdown-preview-view.cornell-left:not(.is-readable-line-width) .markdown-preview-section [data-callout="cue"],
+    .markdown-preview-view.cornell-left:not(.is-readable-line-width) [data-callout="cue"] {
+        left: 0px;
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-right:not(.is-readable-line-width) .cm-scroller,
+    .markdown-preview-view.cornell-right:not(.is-readable-line-width) {
+        padding-right: var(--cornell-cue-column-width) !important;
+    }
+
+
+    .markdown-source-view.cornell-livepreview.cornell-right:not(.is-readable-line-width) .cm-scroller .cm-embed-block:has([data-callout="cue"]),
+    .markdown-preview-view.cornell-right:not(.is-readable-line-width) .markdown-preview-section [data-callout="cue"],
+    .markdown-preview-view.cornell-right:not(.is-readable-line-width) [data-callout="cue"] {
+        right: 0px;
+    }
+
+
+    /* ==========================================================================================   */
+    /* =                              READABLE LINE LENGTH                                      =   */
+    /* ==========================================================================================   */
+    .markdown-source-view.cornell-livepreview.cornell-left.is-readable-line-width .cm-sizer,
+    .markdown-preview-view.cornell-left.is-readable-line-width>.markdown-preview-section {
+        margin-left: var(--cornell-cue-column-width-readable-line) !important;
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-right.is-readable-line-width .cm-sizer,
+    .markdown-preview-view.cornell-right.is-readable-line-width>.markdown-preview-section {
+        margin-right: var(--cornell-cue-column-width-readable-line) !important;
+    }
+
+    .markdown-preview-view.cornell-left.is-readable-line-width .markdown-preview-section,
+    .markdown-preview-view.cornell-right.is-readable-line-width>.markdown-preview-section {
+        width: auto;
+    }
+
+    .markdown-source-view.cornell-livepreview:where(.cornell-left, .cornell-right).is-readable-line-width .cm-sizer .cm-embed-block:has([data-callout="cue"]),
+    .markdown-preview-view:where(.cornell-left, .cornell-right).is-readable-line-width>.markdown-preview-section [data-callout="cue"] {
+        background-color: transparent !important;
+        border: 0px !important;
+        position: absolute !important;
+        margin: 0px;
+        width: var(--cornell-cue-callout-width-readable-line) !important;
+
+        .callout-content {
+            border: 0px;
+        }
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-left.is-readable-line-width .cm-sizer .cm-embed-block:has([data-callout="cue"]),
+    .markdown-preview-view.cornell-left.is-readable-line-width>.markdown-preview-section [data-callout="cue"] {
+        left: 0px;
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-left.is-readable-line-width .cm-sizer .cm-embed-block:has([data-callout="cue"]) {
+        padding-left: 10px;
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-right.is-readable-line-width .cm-sizer .cm-embed-block:has([data-callout="cue"]) {
+        padding-right: 10px;
+
+    }
+
+    .markdown-source-view.cornell-livepreview.cornell-right.is-readable-line-width .cm-sizer .cm-embed-block:has([data-callout="cue"]),
+    .markdown-preview-view.cornell-right.is-readable-line-width>.markdown-preview-section [data-callout="cue"] {
+        right: 0px;
+    }
+
+
+    /* ==========================================================================================   */
+    /* =                              Add borderers with cornell-border                          =   */
+    /* ==========================================================================================   */
+    .cornell-livepreview.cornell-left.cornell-border .cm-sizer,
+    .cornell-left.cornell-border>.markdown-preview-sizer {
+        border-left: 1px solid var(--cornell-border-color) !important;
+        padding-left: var(--cornell-border-padding);
+    }
+
+    .cornell-livepreview.cornell-right.cornell-border .cm-sizer,
+    .cornell-right.cornell-border>.markdown-preview-sizer {
+        border-right: 1px solid var(--cornell-border-color) !important;
+        padding-right: 5px;
+    }
+
+    .markdown-preview-view:where(.cornell-left, .cornell-right).cornell-border [data-callout="summary"] {
+        border-top: 1px solid var(--cornell-border-color);
+    }
+
+    .markdown-preview-view:where(.cornell-left, .cornell-right).cornell-border [data-callout="summary-top"] {
+        border-bottom: 1px solid var(--cornell-border-color);
+    }
+
+}
+
+/* End of @media for width */
+
+
+/* ==========================================================================================   */
+/* =                              Summary callout                                           =   */
+/* ==========================================================================================   */
+
+@media screen {
+    div:not(.markdown-embed-content)> :is(.cornell-left, .cornell-right) .markdown-preview-section [data-callout="summary"] {
+        position: fixed;
+        padding-left: 10px !important;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        padding-left: 0px;
+        margin: 0px;
+        z-index: 1000;
+
+        .callout-content {
+            max-height: var(--cornell-summary-callout-max-height) !important;
+        }
+    }
+}
+
+div:not(.markdown-embed-content)> :is(.cornell-left, .cornell-right) .markdown-preview-section [data-callout="summary"] {
+    background-color: var(--cornell-summary-callout-background-color) !important;
+    mix-blend-mode: unset;
+    border-radius: 0px;
+
+    .callout-title,
+    .callout-content {
+        border: 0px;
+        padding: 0px;
+    }
+
+    .callout-title {
+        margin: 0px !important;
+    }
+
+    .callout-icon {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================================   */
+/* =                              Summary TOP callout                                       =   */
+/* ==========================================================================================   */
+
+@media screen {
+    div:not(.markdown-embed-content)>.markdown-preview-view:is(.cornell-left, .cornell-right):has([data-callout="summary-top"]) {
+        margin-top: var(--cornell-summary-callout-top-height);
+    }
+
+    .show-view-header div:not(.markdown-embed-content)>.markdown-preview-view:is(.cornell-left, .cornell-right):has([data-callout="summary-top"]) {
+        padding-top: 0px;
+    }
+
+    div:not(.markdown-embed-content)>.markdown-preview-view:is(.cornell-left, .cornell-right) [data-callout="summary-top"] {
+        height: var(--cornell-summary-callout-top-height) !important;
+        position: fixed;
+        top: 20px;
+        left: 0px;
+        right: 0px;
+        z-index: 1000;
+        overflow: auto;
+    }
+}
+
+div:not(.markdown-embed-content)>.markdown-preview-view:is(.cornell-left, .cornell-right) [data-callout="summary-top"] {
+    background-color: var(--cornell-summary-callout-background-color) !important;
+    mix-blend-mode: unset;
+    border-radius: 0px;
+
+    .callout-title,
+    .callout-content {
+        border: 0px;
+        padding: 0px;
+    }
+
+    .callout-title {
+        margin: 0px !important;
+    }
+
+    .callout-icon {
+        display: none;
+    }
+}
+
+
+@media print {
+    .markdown-preview-view:is(.cornell-left, .cornell-right) [data-callout="cue"] {
+        width: var(--cornell-cue-column-width) !important;
+    }
+}
+
+
+
+/* @settings
+
+name: Cornell Notes
+id: tft-cornell
+settings:
+  -
+    id: cornell-cue-column
+    title: Cue Column
+    description: Left and right margin widths used by cues and sidenotes
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: cornell-cue-column-width
+    title: Width
+    description: Width in pixels
+    type: variable-number
+    default: 150
+    format: px
+  -
+    id: cornell-cue-column-width-readable-line
+    title: Width Readable Line Length
+    description: Marging width in pixels when Readable Line Length is eanbled in Settings > editor
+    type: variable-number
+    default: 150
+    format: px
+  -
+    id: cornell-cue-callout
+    title: Cue Callout
+    description: Widths for cues and sidenotes
+    type: heading
+    level: 2
+    collapsed: true  
+  -
+    id: cornell-cue-callout-width
+    title: Width
+    description: Cue width in pixels
+    type: variable-number
+    default: 158
+    format: px
+  -
+    id: cornell-cue-callout-width-readable-line
+    title: Width Readable Line Length
+    description: Cue width in pixels when Readable Line Length is eanbled in Settings > editor
+    type: variable-number
+    default: 158
+    format: px
+  -
+    id: cornell-summary-callout
+    title: Summary Callout
+    description: Height and colors for summaries
+    type: heading
+    level: 2
+    collapsed: true  
+  -
+    id: cornell-summary-callout-max-height
+    title: Bottom Summary Maximum Height
+    description: Maximum height in pixels for summaries at the bottom of the document
+    type: variable-number
+    default: 150
+    format: px
+  -
+    id: cornell-summary-callout-top-height
+    title: Top Summary Height
+    description: Height in pixels of summaries at the top of the document
+    type: variable-number
+    default: 150
+    format: px
+  -
+    id: cornell-summary-callout-background-color
+    title: Summary Callout Background Color
+    description: color to use for the background of a summary
+    type: variable-themed-color
+    format: hex
+    opacity: false
+    default-light: '#f0f8ff'
+    default-dark:  '#2e2a2a'
+  -
+    id: cornell-border
+    title: Borders
+    description: Color to use for the borders and padding
+    type: heading
+    level: 2
+    collapsed: true  
+  -
+    id: cornell-border-padding
+    title: Border Padding
+    description: Padding space between the border to the cue
+    type: variable-number
+    default: 10
+    format: px
+  -
+    id: cornell-border-color
+    title: Summary Border Color
+    description: Color to use for the border line
+    type: variable-themed-color
+    format: hex
+    opacity: false
+    default-light: '#808080'
+    default-dark:  '#373535'
+
+*/
