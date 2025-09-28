@@ -1,4 +1,4 @@
-# JournalCraft for Obsidian
+# Cornell Notes Learning for Obsidian
 
 Learn more about Cornell Notes Learning Vault at https://tfthacker.com/cornell-notes. This tool was created by [TfT Hacker](https://tfthacker.com) and has now been open-sourced in order for the Obsidian community to continue to use this learning tool and expand it.
 
