@@ -14,4 +14,4 @@ Once the ZIP file is downloaded, extract it to your desired location. Then, open
 Select the folder named **Cornell-Notes-Learning-Vault**.
 
 # Follow TfT Hacker
-Also, follow TfTHacker at [[x.com/@TfTHacker]] for updates.
+Also, follow TfTHacker at [x.com/@TfTHacker](https://x.com/@TfTHacker) for updates.
