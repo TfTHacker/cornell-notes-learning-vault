@@ -5,7 +5,7 @@ Learn more about Cornell Notes Learning Vault at https://tfthacker.com/cornell-n
 # Using this learning vault
 You need to download this entire repositiory to your local machine. You can download by clicking on the Code button, then "Download ZIP" as show in the image below.
 
-<!-- <img src="./media/download.png" alt="Download ZIP" width="600"> -->
+<img src="./media/download.png" alt="Download ZIP" width="600">
 
 Once the ZIP file is downloaded, extract it to your desired location. Then, open Obsidian and using the Manage Vault option, select "Open folder as vault" and navigate to the location where you extracted the ZIP file.
 
